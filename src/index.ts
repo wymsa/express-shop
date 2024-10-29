@@ -7,6 +7,7 @@ import cors from 'cors';
 
 import DataSource from '@/config/data-source';
 import { shouldCompress } from '@/utils/index';
+import router from '@/routers/index';
 
 async function run() {
   const app: Express = express();
@@ -25,6 +26,8 @@ async function run() {
       });
     })
     .catch((err) => console.error(`Application running error: ${err.message}`));
+
+  app.use('/api', router());
 }
 
 run();
